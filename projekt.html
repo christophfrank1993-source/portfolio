@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Projekt — Automatisierte Linux-Clientinstallation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,10 +32,9 @@
     <div class="wrap">
       <p class="eyebrow">IHK-Abschlussprojekt · Fachgespräch 08.07.2026</p>
       <h1 style="font-size:clamp(2rem,4vw,2.75rem); max-width:20ch;">Automatisierte Linux-Clientinstallation mit Bash-Skript</h1>
-      <p class="narrow" style="font-size:1.05rem;">Entwicklung einer USB-basierten Nachkonfiguration für Linux Mint am Max-Planck-Institut für Verhaltensbiologie, Konstanz/Radolfzell.</p>
+      <p class="narrow" style="font-size:1.05rem;">Entwicklung einer USB-basierten Nachkonfiguration für Linux Mint am Max-Planck-Institut für Verhaltensbiologie, Konstanz.</p>
       <div class="btn-row">
-        <a href="assets/Projektpraesentation.pdf" class="btn btn-primary" download>Präsentation (PDF)</a>
-        <a href="assets/Projektdokumentation_Christoph_Frank.pdf" class="btn btn-ghost" download>Vollständige Dokumentation (PDF)</a>
+        <a href="assets/projektpraesentation.pdf" class="btn btn-primary" download>Präsentation (PDF)</a>
       </div>
     </div>
   </section>
@@ -56,7 +56,7 @@
     <div class="wrap narrow">
       <p class="eyebrow">Ausgangslage</p>
       <h2>60 bis 90 Minuten pro Client — vollständig manuell</h2>
-      <p>Am Institut werden monatlich rund 15–20 Linux-Clients neu eingerichtet oder neu installiert. Jede Einrichtung bedeutete denselben manuellen Ablauf: Programme wie FortiClient VPN, KACE, Mattermost, RustDesk, Zoom, Owncloud und WithSecure einzeln installieren, SSH-Keys hinterlegen, Benutzerrechte setzen und das Institut-Branding einrichten. Wiederkehrende Handarbeit, die Zeit kostet und Raum für Fehler lässt — etwa vergessene SSH-Keys oder falsches Branding.</p>
+      <p>Am Institut werden durchschnittlich 15–20 Linux-Clients pro Monat neu eingerichtet oder neu installiert — bedingt durch die hohe Gerätefluktuation im wissenschaftlichen Betrieb. Jede Einrichtung bedeutete denselben manuellen Ablauf: Programme wie FortiClient VPN, KACE, Mattermost, RustDesk, Zoom, Owncloud und WithSecure einzeln installieren, SSH-Keys hinterlegen, Benutzerrechte setzen und das Institut-Branding einrichten. Wiederkehrende Handarbeit, die Zeit kostet und Raum für Fehler lässt — etwa vergessene SSH-Keys oder falsches Branding.</p>
     </div>
   </section>
 
@@ -109,8 +109,8 @@
   <section class="section-line">
     <div class="wrap narrow">
       <p class="eyebrow">Wirtschaftlichkeit &amp; Ergebnis</p>
-      <h2>Aus 60–90 Minuten werden rund 15</h2>
-      <p>In rund 20 Testläufen auf physischer Testhardware lief das Skript zuverlässig und reproduzierbar durch. Bei einem Richtwert von 15–20 Neueinrichtungen pro Monat und 30 €/Std. IT-Personalkosten ergibt sich eine geschätzte Ersparnis von 19–25 Arbeitsstunden bzw. rund 560–750 € pro Monat — bei einmaligen Materialkosten von 5 € je USB-Stick.</p>
+      <h2>80% Zeitersparnis gegenüber der manuellen Installation</h2>
+      <p>Auf physischer Testhardware lief das Skript zuverlässig und reproduzierbar durch. Bei einem Richtwert von 15–20 Neueinrichtungen pro Monat und 30 €/Std. IT-Personalkosten ergibt sich eine geschätzte Ersparnis von 19–25 Arbeitsstunden bzw. rund 560–750 € pro Monat — bei einmaligen Materialkosten von 5 € je USB-Stick (wiederverwendbar).</p>
       <p>Wichtiger als die reine Zeitersparnis: Alle Clients erhalten dieselbe Konfiguration. Das reduziert Fehlerquellen, vereinfacht die spätere Wartung und macht Supportfälle schneller nachvollziehbar.</p>
     </div>
   </section>
@@ -132,7 +132,6 @@
     <div>© 2026 Christoph Frank · Konstanz</div>
     <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
       <a href="mailto:christoph.frank1993@gmail.com">christoph.frank1993@gmail.com</a>
-      <a href="tel:+4917621119970">0176 21119970</a>
     </div>
   </div>
 </footer>
