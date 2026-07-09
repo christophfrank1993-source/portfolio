@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projekt — Automatisierte Linux-Clientinstallation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">christoph<span>@</span>frank</a>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">Menü ▾</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lebenslauf.html">Lebenslauf</a></li>
+      <li><a href="projekt.html" class="active">Projekt</a></li>
+      <li><a href="zertifikate.html">Zertifikate</a></li>
+      <li><a href="mailto:christoph.frank1993@gmail.com">Kontakt</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">IHK-Abschlussprojekt · Fachgespräch 08.07.2026</p>
+      <h1 style="font-size:clamp(2rem,4vw,2.75rem); max-width:20ch;">Automatisierte Linux-Clientinstallation mit Bash-Skript</h1>
+      <p class="narrow" style="font-size:1.05rem;">Entwicklung einer USB-basierten Nachkonfiguration für Linux Mint am Max-Planck-Institut für Verhaltensbiologie, Konstanz/Radolfzell.</p>
+      <div class="btn-row">
+        <a href="assets/Projektpraesentation.pdf" class="btn btn-primary" download>Präsentation (PDF)</a>
+        <a href="assets/Projektdokumentation_Christoph_Frank.pdf" class="btn btn-ghost" download>Vollständige Dokumentation (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section>
+    <div class="wrap">
+      <div class="stat-strip">
+        <div><div class="stat">80%</div><div class="stat-label">Zeitersparnis pro Installation</div></div>
+        <div><div class="stat">60–90 → 15</div><div class="stat-label">Minuten aktiver Aufwand</div></div>
+        <div><div class="stat">19–25 Std.</div><div class="stat-label">gesparte Arbeitszeit / Monat</div></div>
+        <div><div class="stat">≈ 560–750 €</div><div class="stat-label">Personalkosten-Ersparnis / Monat</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUSGANGSSITUATION -->
+  <section>
+    <div class="wrap narrow">
+      <p class="eyebrow">Ausgangslage</p>
+      <h2>60 bis 90 Minuten pro Client — vollständig manuell</h2>
+      <p>Am Institut werden monatlich rund 15–20 Linux-Clients neu eingerichtet oder neu installiert. Jede Einrichtung bedeutete denselben manuellen Ablauf: Programme wie FortiClient VPN, KACE, Mattermost, RustDesk, Zoom, Owncloud und WithSecure einzeln installieren, SSH-Keys hinterlegen, Benutzerrechte setzen und das Institut-Branding einrichten. Wiederkehrende Handarbeit, die Zeit kostet und Raum für Fehler lässt — etwa vergessene SSH-Keys oder falsches Branding.</p>
+    </div>
+  </section>
+
+  <!-- LÖSUNGSFINDUNG -->
+  <section class="section-line">
+    <div class="wrap narrow">
+      <p class="eyebrow">Lösungsfindung</p>
+      <h2>Warum ein Bash-Skript statt Preseed oder Cubic</h2>
+      <p>Für die Automatisierung wurden drei Ansätze geprüft:</p>
+      <div class="grid-2" style="margin:1.5rem 0;">
+        <div class="card">
+          <h3 style="font-size:1rem;">Preseed</h3>
+          <p style="margin:0; font-size:0.94rem;">Automatisiert Debian-Installationen teilweise, interagiert bei Linux Mint jedoch nur eingeschränkt mit dem grafischen Ubiquity-Installer — nicht stabil reproduzierbar.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1rem;">Cubic</h3>
+          <p style="margin:0; font-size:0.94rem;">Erlaubt angepasste ISO-Images, macht die Lösung aber wartungsintensiv: jede Änderung erfordert ein neues Image.</p>
+        </div>
+      </div>
+      <p><strong>Entscheidung:</strong> Linux Mint wird weiterhin manuell über einen Ventoy-USB-Stick installiert. Die komplette, zeitaufwendige Nachkonfiguration übernimmt anschließend ein Bash-Skript — flexibel, erweiterbar und unabhängig vom Installer.</p>
+    </div>
+  </section>
+
+  <!-- TECHNISCHE UMSETZUNG -->
+  <section class="section-line">
+    <div class="wrap narrow">
+      <p class="eyebrow">Technische Umsetzung</p>
+      <h2>Aufbau des USB-Sticks</h2>
+      <p>Ventoy dient als Bootmanager für das Linux-Mint-ISO. Daneben liegen auf dem Stick drei Ordner:</p>
+      <div class="card mono" style="font-size:0.85rem; line-height:1.9; margin:1.25rem 0;">
+        Projekt/<br>
+        ├── linuxmint-22.3.iso<br>
+        └── autoinstall/<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;├── branding/&nbsp;&nbsp;<span style="color:var(--ink-faint);">Wallpaper, Benutzerbild, SSH-Keys</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;├── packages/&nbsp;&nbsp;<span style="color:var(--ink-faint);">lokale .deb-Pakete</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;└── scripts/&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--ink-faint);">post-install.sh</span>
+      </div>
+      <p>Nach der manuellen Linux-Mint-Installation wird <code>post-install.sh</code> einmal im Terminal gestartet und übernimmt:</p>
+      <ul style="color:var(--ink-soft); padding-left:1.1em;">
+        <li>Installation von Standardsoftware über <code>apt</code> (OpenSSH-Server, Tmux, KeePassXC) und über lokale .deb-Pakete (FortiClient VPN, KACE-Agent, Mattermost, RustDesk, Zoom, OwnCloud, WithSecure)</li>
+        <li>Einrichtung und Aktivierung von SSH inklusive Hinterlegung der öffentlichen Keys</li>
+        <li>Setzen von Benutzer- und Dateiberechtigungen</li>
+        <li>Einrichtung des Institut-Brandings (Wallpaper, Benutzerbild)</li>
+      </ul>
+      <p>Jeder Schritt protokolliert Erfolg oder Fehler in ein Logfile (<code>/var/log/mpiab-postinstall.log</code>), sodass sich die Installation am Ende auf einen Blick prüfen lässt.</p>
+    </div>
+  </section>
+
+  <!-- WIRTSCHAFTLICHKEIT -->
+  <section class="section-line">
+    <div class="wrap narrow">
+      <p class="eyebrow">Wirtschaftlichkeit &amp; Ergebnis</p>
+      <h2>Aus 60–90 Minuten werden rund 15</h2>
+      <p>In rund 20 Testläufen auf physischer Testhardware lief das Skript zuverlässig und reproduzierbar durch. Bei einem Richtwert von 15–20 Neueinrichtungen pro Monat und 30 €/Std. IT-Personalkosten ergibt sich eine geschätzte Ersparnis von 19–25 Arbeitsstunden bzw. rund 560–750 € pro Monat — bei einmaligen Materialkosten von 5 € je USB-Stick.</p>
+      <p>Wichtiger als die reine Zeitersparnis: Alle Clients erhalten dieselbe Konfiguration. Das reduziert Fehlerquellen, vereinfacht die spätere Wartung und macht Supportfälle schneller nachvollziehbar.</p>
+    </div>
+  </section>
+
+  <!-- FAZIT -->
+  <section class="section-line">
+    <div class="wrap narrow">
+      <p class="eyebrow">Fazit &amp; Ausblick</p>
+      <h2>Teilautomatisierung statt Zero-Touch — bewusst</h2>
+      <p>Ursprünglich war eine vollständig automatisierte „Zero-Touch"-Installation via Preseed geplant. Da der von Linux Mint verwendete Ubiquity-Installer dafür keine stabile Unterstützung bietet, wurde der Projektumfang angepasst: Die Betriebssysteminstallation bleibt manuell, die Nachkonfiguration — der arbeitsintensivere Teil — ist vollständig automatisiert. Das Ergebnis wurde von der IT-Abteilung produktiv übernommen.</p>
+      <p>Denkbare Erweiterungen: Einsatz von Ubuntu Autoinstall, PXE-basierte Netzwerkinstallationen und eine zentrale Softwareverteilung, z.&nbsp;B. über Ansible.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Christoph Frank · Konstanz</div>
+    <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+      <a href="mailto:christoph.frank1993@gmail.com">christoph.frank1993@gmail.com</a>
+      <a href="tel:+4917621119970">0176 21119970</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+  }
+</script>
+</body>
+</html>

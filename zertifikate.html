@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zertifikate — Christoph Frank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">christoph<span>@</span>frank</a>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">Menü ▾</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="lebenslauf.html">Lebenslauf</a></li>
+      <li><a href="projekt.html">Projekt</a></li>
+      <li><a href="zertifikate.html" class="active">Zertifikate</a></li>
+      <li><a href="mailto:christoph.frank1993@gmail.com">Kontakt</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Nachweise</p>
+      <h1 style="font-size:clamp(2rem,4vw,2.75rem);">Zertifikate &amp; Zeugnisse</h1>
+      <p class="narrow">Zum Ansehen oder Herunterladen als PDF.</p>
+    </div>
+  </section>
+
+  <section class="section-line">
+    <div class="wrap">
+      <div class="grid-2">
+
+        <div class="cert-card">
+          <div class="cert-issuer">Zabbix LLC</div>
+          <h3>Zabbix 7.0 Certified User</h3>
+          <div class="cert-date">Ausgestellt Juni 2026 · Zertifikat-Nr. CU-2606-283</div>
+          <p style="margin:0; font-size:0.94rem;">Bestätigt praktische Kenntnisse im Monitoring mit Zabbix 7.0, eingesetzt zur Überwachung der IT-Infrastruktur am MPI für Verhaltensbiologie.</p>
+          <a href="assets/Zertifikat_Zabbix.pdf" class="btn btn-ghost" download style="align-self:flex-start;">PDF öffnen</a>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-issuer">Max-Planck-Institut für Verhaltensbiologie</div>
+          <h3>Zwischenzeugnis</h3>
+          <div class="cert-date">Ausgestellt 03.06.2026 · Radolfzell</div>
+          <p style="margin:0; font-size:0.94rem;">Bescheinigt die Umschulungstätigkeit seit Oktober 2025 in Client-, Netzwerk- und Serveradministration sowie IT-Support — „sehr motivierter und absolut zuverlässiger Mitarbeiter".</p>
+          <a href="assets/Zwischenzeugnis_MPIAB.pdf" class="btn btn-ghost" download style="align-self:flex-start;">PDF öffnen</a>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-issuer">Multinationales Kommando Operative Führung, Ulm</div>
+          <h3>Certificate of Appreciation — NATO-Übung „United Endeavour 2014"</h3>
+          <div class="cert-date">Oktober 2014 · Truppenübungsplatz Heuberg</div>
+          <p style="margin:0; font-size:0.94rem;">Auszeichnung für herausragende Leistung und wichtigen Beitrag zur multinationalen Übung im Rahmen des Wehrdienstes.</p>
+          <a href="assets/Zertifikat_Bundeswehr.pdf" class="btn btn-ghost" download style="align-self:flex-start;">PDF öffnen</a>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-issuer">Bundesrepublik Deutschland</div>
+          <h3>Dankurkunde des Bundesministeriums der Verteidigung</h3>
+          <div class="cert-date">29.02.2016 · Dornstadt</div>
+          <p style="margin:0; font-size:0.94rem;">Dank und Anerkennung für die geleisteten treuen Dienste beim 4./Sanitätsregiment 3.</p>
+          <a href="assets/Dankesurkunde_Bundeswehr.pdf" class="btn btn-ghost" download style="align-self:flex-start;">PDF öffnen</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Christoph Frank · Konstanz</div>
+    <div style="display:flex; gap:1.5rem; flex-wrap:wrap;">
+      <a href="mailto:christoph.frank1993@gmail.com">christoph.frank1993@gmail.com</a>
+      <a href="tel:+4917621119970">0176 21119970</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+  }
+</script>
+</body>
+</html>
